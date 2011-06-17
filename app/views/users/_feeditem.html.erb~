@@ -1,0 +1,8 @@
+<tr>
+  <td class="feeditem">
+    <span class="content"><%= link_to feeditem.title, feeditem.link %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(feeditem.pubDate) %> ago.
+    </span>
+  </td>
+</tr>

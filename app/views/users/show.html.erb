@@ -1,0 +1,11 @@
+<h1><%= @feed.name %></h1>
+<% unless @feeditems.empty? %>
+<table class="feeditems" summary="Comic feed items">
+  <% @feeditems.each do |f|  %>
+  <% # if feed.bookmark >= feeditem.pubDate 
+     # place the bookmark before the first feed item it is more recent than %>
+  <%= render 'feeditem', :feeditem => f %>
+  <% end %>
+</table>
+<%= will_paginate @feeditems %>
+<% end %>

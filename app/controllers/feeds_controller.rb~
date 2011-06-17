@@ -1,0 +1,18 @@
+class FeedsController < ApplicationController
+
+  require 'nokogiri'
+  require 'open-uri'
+
+  def create
+    doc = Nokogiri::XML(open("http://megatokyo.com/rss/megatokyo.xml"))
+    
+    items = doc.xpath('//item').map do |i|
+      {'title' => i.xpath('title').inner_text, 'link' => i.xpath('link').inner_text, 'description' => i.xpath('description').inner_text}
+    end
+
+    @feeditems = items.map do |i|
+      B
+
+    @feeditems = items.paginate(:page => params[:page])
+  end
+end

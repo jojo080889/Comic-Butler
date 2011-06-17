@@ -8,6 +8,10 @@ gem 'rake', '~> 0.8.7'
 
 gem 'sqlite3'
 
+gem 'nokogiri'
+
+gem 'will_paginate'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,0 +1,9 @@
+<h1><%= @feed.name %></h1>
+<% unless @feeditems.empty? %>
+<table class="feeditems" summary="Comic feed items">
+  <% @feeditems.each do |f|  %>
+  <%= render 'feeditem', :feeditem => f %>
+  <% end %>
+</table>
+<%= will_paginate @feeditems %>
+<% end %>
