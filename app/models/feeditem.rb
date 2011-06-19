@@ -1,5 +1,5 @@
 class Feeditem < ActiveRecord::Base
-  attr_accessible :title, :link, :description, :pubDate
+  attr_accessible :title, :link, :description, :pubDate, :read
 
   belongs_to :feed, :dependent => :destroy
   

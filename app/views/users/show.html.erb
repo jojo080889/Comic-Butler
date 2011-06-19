@@ -1,11 +1,15 @@
-<h1><%= @feed.name %></h1>
+<% bookmarkSet = false %>
+
+<h1><%= @feed.name %> (<span id="unreadCount"><%= unread_count @feed %></span> unread)</h1>
 <% unless @feeditems.empty? %>
-<table class="feeditems" summary="Comic feed items">
-  <% @feeditems.each do |f|  %>
-  <% # if feed.bookmark >= feeditem.pubDate 
-     # place the bookmark before the first feed item it is more recent than %>
+<ul id="feeditems" summary="Comic feed items">
+  <% @feeditems.each do |f| 
+       if ((@feed.bookmarkDate >= f.pubDate)&& !bookmarkSet) %>
+       <%= render 'feedbookmark' %>
+  <% bookmarkSet = true
+     end %>
   <%= render 'feeditem', :feeditem => f %>
   <% end %>
-</table>
+</ul>
 <%= will_paginate @feeditems %>
 <% end %>

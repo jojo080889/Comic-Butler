@@ -1,3 +1,36 @@
+
+
+/* Navigation */
+nav {
+    border: 2px solid black;
+    padding: 0 0.7em;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    white-space: nowrap; /* check */
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding:0.2em 0;
+}
+
+nav ul li a {
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sign in container */
+
 #signinContainer section {
     border: black 2px solid;
     width: 300px;
@@ -12,8 +45,36 @@
     margin-left:-150px;
 }
 
-/* Round corners */
+#feeditems {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
+#feeditems li {
+    background-color: #eee;
+    padding: 2px;
+    margin: 5px 2px;
+}
+
+#feeditems #feedbookmark {
+    height: 30px;
+    background-color: #DD0000;
+    width: 103%;
+    position: relative;
+    left: -4%;
+    padding-top: 15px;
+    text-transform: uppercase;
+    color: #FFCC33;
+    font-size: 120%;
+    text-shadow: #444444 1px 1px;
+}
+
+.read {
+    opacity: 0.5;
+}
+
+/* Round corners */
 .round {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;

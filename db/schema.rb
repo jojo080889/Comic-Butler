@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110617034823) do
+ActiveRecord::Schema.define(:version => 20110617182311) do
 
   create_table "feeditems", :force => true do |t|
     t.integer  "feed_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110617034823) do
     t.datetime "pubDate"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "read",        :default => true
   end
 
   add_index "feeditems", ["feed_id"], :name => "index_feeditems_on_feed_id"
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110617034823) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "bookmarkDate"
   end
 
   create_table "users", :force => true do |t|

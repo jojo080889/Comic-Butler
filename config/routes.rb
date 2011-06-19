@@ -1,6 +1,7 @@
 Comicbutler::Application.routes.draw do
 
   resources :users
+  resources :feeditems
   resources :sessions, :only => [:new, :create, :destroy]
 
   root :to => 'sessions#new'

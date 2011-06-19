@@ -10,14 +10,17 @@
     <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
     <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+    
+    <%= javascript_include_tag 'prototype' %>
+    <%= javascript_include_tag 'scriptaculous/scriptaculous' %>
+    <%= javascript_include_tag 'custom' %>
   </head>
   <body>
     <div class="container">
       <header>
-        <%= link_to logo, root_path %>
         <nav class="round">
           <ul>
-            <li><%= link_to "Home", users_path %></li>
+            <li><%= link_to "Home", root_path %></li>
 	    <li><%= link_to "Add a Comic", '#' %></li>
             <li><%= link_to "Settings", '#' %></li>
             <li><%= link_to "Sign out", signout_path, :method => :delete %></li>

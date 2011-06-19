@@ -1,0 +1,49 @@
+class FeeditemsController < ApplicationController
+  
+  def update #for markAsRead function in javascript
+    #render :layout => false
+    
+    if (params[:what] == "markAsRead")
+      # mark corresponding feed item as read
+      @feeditem = Feeditem.find(params[:id])
+      @feeditem.update_attributes(:read => true)
+      
+      # move bookmark if necessary
+      bDate = @feeditem.feed.bookmarkDate
+      
+      # get the number of unread items between the current bookmark and the item marked read
+      unreadCnt = Feeditem.where("pubDate > ? AND pubDate < ? AND read='f'", bDate, @feeditem.pubDate).count
+      
+      # find most latest unread item with a pubDate > bookmarkDate
+      unreadItem = Feeditem.where("pubDate > ? AND read='f'", bDate).sort_by {|f| f.pubDate}.first
+      
+      # then find the item after it
+      lastItem = Feeditem.where("pubDate < ?", unreadItem.pubDate).sort_by {|f| f.pubDate}.last
+      
+      if (unreadCnt == 0)
+        # move bookmark!
+        @feeditem.feed.update_attributes(:bookmarkDate => lastItem.pubDate)
+      end
+    else # if marking as unread
+      # mark corresponding feed item as unread
+      @feeditem = Feeditem.find(params[:id])
+      @feeditem.update_attributes(:read => false)
+      
+      # move bookmark if necessary
+      bDate = @feeditem.feed.bookmarkDate
+
+      # are there no unread items between the bookmark date and the current item date?
+      unreadCnt = Feeditem.where("pubDate > ? AND pubDate < ? AND read='f'", bDate, @feeditem.pubDate).count;
+      
+      # find the feed item before the current feeditem
+      lastItem = Feeditem.where("pubDate < ?", @feeditem.pubDate).sort_by {|f| f.pubDate}.last
+
+      if (unreadCnt == 0)
+        #move bookmark
+        @feeditem.feed.update_attributes(:bookmarkDate => lastItem.pubDate)
+      end
+      
+    end
+    return true;
+  end
+end
