@@ -8,5 +8,5 @@ class Feeditem < ActiveRecord::Base
   validates :feed_id, :presence => true
   validates :pubDate, :presence => true
 
-  default_scope :order => 'feeditems.pubDate DESC'
+  default_scope :order => "feeditems.\"pubDate\" DESC"
 end

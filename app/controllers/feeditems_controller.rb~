@@ -44,6 +44,5 @@ class FeeditemsController < ApplicationController
       end
       
     end
-    return true;
   end
 end
