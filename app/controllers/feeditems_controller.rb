@@ -12,7 +12,7 @@ class FeeditemsController < ApplicationController
       bDate = @feeditem.feed.bookmarkDate
       
       # get the number of unread items between the current bookmark and the item marked read
-      unreadCnt = Feeditem.where("\"pubDate\" > ? AND pubDate < ? AND read='f'", bDate, @feeditem.pubDate).count
+      unreadCnt = Feeditem.where("\"pubDate\" > ? AND \"pubDate\" < ? AND read='f'", bDate, @feeditem.pubDate).count
       
       # find most latest unread item with a pubDate > bookmarkDate
       unreadItem = Feeditem.where("\"pubDate\" > ? AND read='f'", bDate).sort_by {|f| f.pubDate}.first
@@ -33,7 +33,7 @@ class FeeditemsController < ApplicationController
       bDate = @feeditem.feed.bookmarkDate
 
       # are there no unread items between the bookmark date and the current item date?
-      unreadCnt = Feeditem.where("\"pubDate\" > ? AND pubDate < ? AND read='f'", bDate, @feeditem.pubDate).count;
+      unreadCnt = Feeditem.where("\"pubDate\" > ? AND \"pubDate\" < ? AND read='f'", bDate, @feeditem.pubDate).count;
       
       # find the feed item before the current feeditem
       lastItem = Feeditem.where("\"pubDate\" < ?", @feeditem.pubDate).sort_by {|f| f.pubDate}.last
